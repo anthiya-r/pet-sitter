@@ -53,7 +53,9 @@ function FilterBar() {
       rate: searchData.rate === rate ? undefined : rate,
     });
   };
-  console.log(searchData);
+
+  // console.log(searchData);
+
   return (
     <div className="max-w-[1064px] mx-auto rounded-[15px]">
       <div className="w-full p-6 bg-gray-100 rounded-t-[15px] flex items-center gap-3 self-stretch">
