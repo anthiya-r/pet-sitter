@@ -8,8 +8,9 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function Navbar() {
-  const auth = useAuth();
-  // const auth = { isAuthenticate: true };
+  //   const auth = useAuth();
+  const auth = { isAuthenticate: false };
+  const { logout } = useAuth();
   const navigate = useNavigate();
   const { signOut, getUserData, user, isAuthenticated } = useAuth();
   const [imageProfile, setImageProfile] = useState("");
@@ -32,13 +33,8 @@ function Navbar() {
   };
 
   useEffect(() => {
-<<<<<<< Updated upstream
     getUserData();
     isAuthenticated && getImageProfile();
-=======
-    // getImageProfile();
-    // getUserData();
->>>>>>> Stashed changes
   }, []);
 
   const LoginButton = () => {
