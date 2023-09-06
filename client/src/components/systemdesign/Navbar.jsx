@@ -5,12 +5,28 @@ import { useAuth } from "../../contexts/authentication";
 import frame2 from "../../assets/SitterReview/frame427320942.png";
 import { UserIcon, PetIcon, ListIcon, LogOutIcon } from "./Icons";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function Navbar() {
   //   const auth = useAuth();
-  const auth = { isAuthenticate: false };
+  const auth = { isAuthenticate: true };
   const { logout } = useAuth();
   const navigate = useNavigate();
+
+  const [imageProfile, setImageProfile] = useState("");
+
+  const getImageProfile = async () => {
+    try {
+      const result = await axios.get(`http://localhost:4000/account/1`);
+      setImageProfile(result.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getImageProfile();
+  }, []);
 
   const LoginButton = () => {
     const [hoveredItemId, setHoveredItemId] = useState(null);
@@ -52,7 +68,11 @@ function Navbar() {
       return (
         <div className="dropdown dropdown-end">
           <label tabIndex={0}>
-            <img src={frame2} alt="" className="w-12 h-12" />
+            <img
+              src={imageProfile ? imageProfile : frame2}
+              alt=""
+              className="w-12 h-12"
+            />
           </label>
           <ul
             tabIndex={0}
