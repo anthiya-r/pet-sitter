@@ -102,7 +102,7 @@ function AuthProvider(props) {
   };
   const signOut = async () => {
     const { error } = await supabase.auth.signOut();
-    nav("login");
+    nav("/login");
   };
 
   return (
@@ -118,8 +118,7 @@ function AuthProvider(props) {
         signOut,
         role,
         user,
-      }}
-    >
+      }}>
       {props.children}
     </AuthContext.Provider>
   );
