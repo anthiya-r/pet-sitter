@@ -87,12 +87,10 @@ function AuthProvider(props) {
   const getUserData = async () => {
     await supabase.auth.getUser().then((value) => {
       if (value.data?.user) {
-<<<<<<< HEAD
         // console.log(value.data);
-=======
-        console.log(value.data.user);
->>>>>>> f2952b2 (fix bug)
         console.log(value.data);
+=======
+>>>>>>> f8f154f (fix bug)
         setUser(value.data.user.user_metadata);
       }
     });
