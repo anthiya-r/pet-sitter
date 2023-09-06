@@ -8,9 +8,9 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function Navbar() {
-  //   const auth = useAuth();
-  const auth = { isAuthenticate: true };
-  const { logout } = useAuth();
+  const auth = useAuth();
+  // const auth = { isAuthenticate: true };
+  const { signOut, getUserData, user } = useAuth();
   const navigate = useNavigate();
 
   const [imageProfile, setImageProfile] = useState("");
@@ -26,6 +26,7 @@ function Navbar() {
 
   useEffect(() => {
     getImageProfile();
+    getUserData();
   }, []);
 
   const LoginButton = () => {
@@ -40,9 +41,7 @@ function Navbar() {
             ? "hover:text-gray-400 hover:bg-orange-200 hover:rounded-[10px] active:bg-orange-500"
             : ""
         } ${content === "Log Out" ? "border-t-2" : ""}`}
-        onClick={() => {
-          navigate;
-        }}>
+        onClick={navigate}>
         <a>
           <Icon
             color="#3A3B46"
@@ -54,17 +53,25 @@ function Navbar() {
     );
 
     const menuItems = [
-      { icon: UserIcon, content: "Profile" },
-      { icon: PetIcon, content: "Your Pet" },
-      { icon: ListIcon, content: "History" },
-      { icon: LogOutIcon, content: "Log Out", navigate: logout },
-      //   { icon: UserIcon, content: "Profile", navigate: navigate("/profile") },
-      //   { icon: PetIcon, content: "Your Pet", navigate: navigate("/yourpet") },
-      //   { icon: ListIcon, content: "History", navigate: navigate("/history") },
-      //   { icon: LogOutIcon, content: "Log Out", navigate: logout },
+      {
+        icon: UserIcon,
+        content: "Profile",
+        navigate: () => navigate("/profile"),
+      },
+      {
+        icon: PetIcon,
+        content: "Your Pet",
+        navigate: () => navigate("/yourpet"),
+      },
+      {
+        icon: ListIcon,
+        content: "History",
+        navigate: () => navigate("/history"),
+      },
+      { icon: LogOutIcon, content: "Log Out", navigate: () => signOut() },
     ];
 
-    if (auth.isAuthenticate) {
+    if (true) {
       return (
         <div className="dropdown dropdown-end">
           <label tabIndex={0}>
@@ -83,6 +90,7 @@ function Navbar() {
                 id={idx}
                 icon={item.icon}
                 content={item.content}
+                navigate={item.navigate}
               />
             ))}
           </ul>
@@ -100,9 +108,9 @@ function Navbar() {
 
   return (
     <div className="min-w-[1440px] h-20 px-20 flex justify-between items-center flex-shrink-0">
-      <div>
+      <button onClick={() => navigate("/")}>
         <SitterIconBlack width="131" height="40" />
-      </div>
+      </button>
       <div
         className={
           auth.isAuthenticate
