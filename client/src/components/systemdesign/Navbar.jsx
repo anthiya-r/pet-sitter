@@ -8,9 +8,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function Navbar() {
-  //   const auth = useAuth();
-  const auth = { isAuthenticate: false };
-  const { logout } = useAuth();
+  const auth = useAuth();
+  // const auth = { isAuthenticate: true };
   const navigate = useNavigate();
   const { signOut, getUserData, user, isAuthenticated } = useAuth();
   const [imageProfile, setImageProfile] = useState("");
