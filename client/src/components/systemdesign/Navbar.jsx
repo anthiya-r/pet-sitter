@@ -10,9 +10,8 @@ import axios from "axios";
 function Navbar() {
   const auth = useAuth();
   // const auth = { isAuthenticate: true };
-  const { signOut, getUserData, user } = useAuth();
   const navigate = useNavigate();
-
+  const { signOut, getUserData, user, isAuthenticated } = useAuth();
   const [imageProfile, setImageProfile] = useState("");
 
   const getImageProfile = async () => {
@@ -71,14 +70,14 @@ function Navbar() {
       { icon: LogOutIcon, content: "Log Out", navigate: () => signOut() },
     ];
 
-    if (true) {
+    if (isAuthenticated) {
       return (
         <div className="dropdown dropdown-end">
           <label tabIndex={0}>
             <img
               src={imageProfile ? imageProfile : frame2}
               alt=""
-              className="w-12 h-12"
+              className="w-12 h-12 rounded-full"
             />
           </label>
           <ul
