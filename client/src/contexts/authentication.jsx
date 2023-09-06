@@ -87,6 +87,11 @@ function AuthProvider(props) {
   const getUserData = async () => {
     await supabase.auth.getUser().then((value) => {
       if (value.data?.user) {
+<<<<<<< HEAD
+        // console.log(value.data);
+=======
+        console.log(value.data.user);
+>>>>>>> f2952b2 (fix bug)
         console.log(value.data);
         setUser(value.data.user.user_metadata);
       }
@@ -102,7 +107,7 @@ function AuthProvider(props) {
   };
   const signOut = async () => {
     const { error } = await supabase.auth.signOut();
-    nav("/login");
+    nav("login");
   };
 
   return (

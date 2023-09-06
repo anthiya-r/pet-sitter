@@ -11,9 +11,12 @@ function Navbar() {
   const auth = useAuth();
   // const auth = { isAuthenticate: true };
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   const { signOut, getUserData, user } = useAuth();
 >>>>>>> bd7a669 (modify: fix navigate to other page)
+=======
+>>>>>>> 8899384 (fix bug)
   const navigate = useNavigate();
   const { signOut, getUserData, user, isAuthenticated } = useAuth();
   const [imageProfile, setImageProfile] = useState("");
@@ -88,10 +91,14 @@ function Navbar() {
     ];
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     if (isAuthenticated) {
 =======
     if (true) {
 >>>>>>> bd7a669 (modify: fix navigate to other page)
+=======
+    if (isAuthenticated) {
+>>>>>>> 8899384 (fix bug)
       return (
         <div className="dropdown dropdown-end">
           <label tabIndex={0}>
