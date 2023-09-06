@@ -10,6 +10,10 @@ import axios from "axios";
 function Navbar() {
   const auth = useAuth();
   // const auth = { isAuthenticate: true };
+<<<<<<< HEAD
+=======
+  const { signOut, getUserData, user } = useAuth();
+>>>>>>> bd7a669 (modify: fix navigate to other page)
   const navigate = useNavigate();
   const { signOut, getUserData, user, isAuthenticated } = useAuth();
   const [imageProfile, setImageProfile] = useState("");
@@ -32,8 +36,13 @@ function Navbar() {
   };
 
   useEffect(() => {
+<<<<<<< HEAD
     getUserData();
     isAuthenticated && getImageProfile();
+=======
+    getImageProfile();
+    getUserData();
+>>>>>>> bd7a669 (modify: fix navigate to other page)
   }, []);
 
   const LoginButton = () => {
@@ -78,7 +87,11 @@ function Navbar() {
       { icon: LogOutIcon, content: "Log Out", navigate: () => signOut() },
     ];
 
+<<<<<<< HEAD
     if (isAuthenticated) {
+=======
+    if (true) {
+>>>>>>> bd7a669 (modify: fix navigate to other page)
       return (
         <div className="dropdown dropdown-end">
           <label tabIndex={0}>
