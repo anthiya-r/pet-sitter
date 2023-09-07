@@ -87,7 +87,7 @@ function AuthProvider(props) {
   const getUserData = async () => {
     await supabase.auth.getUser().then((value) => {
       if (value.data?.user) {
-        // console.log(value.data);
+        console.log(value.data);
         setUser(value.data.user.user_metadata);
       }
     });

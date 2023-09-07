@@ -15,17 +15,25 @@ function Navbar() {
   const [imageProfile, setImageProfile] = useState("");
 
   const getImageProfile = async () => {
-    try {
-      const result = await axios.get(`http://localhost:4000/account/1`);
-      setImageProfile(result.data.data);
-    } catch (error) {
-      console.log(error);
+    const userEmail = user.email;
+
+    if (user.user_metadata.email_verified) {
+      setImageProfile(user.user_metadata.avatar_url);
+    } else {
+      try {
+        const result = await axios.get(
+          `http://localhost:4000/account/${userEmail}`
+        );
+        setImageProfile(result.data.data);
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
   useEffect(() => {
-    getImageProfile();
     getUserData();
+    isAuthenticated && getImageProfile();
   }, []);
 
   const LoginButton = () => {
