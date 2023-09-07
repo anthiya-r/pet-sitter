@@ -5,12 +5,53 @@ import { useAuth } from "../../contexts/authentication";
 import frame2 from "../../assets/SitterReview/frame427320942.png";
 import { UserIcon, PetIcon, ListIcon, LogOutIcon } from "./Icons";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function Navbar() {
-  //   const auth = useAuth();
-  const auth = { isAuthenticate: false };
-  const { logout } = useAuth();
+  const auth = useAuth();
+  // const auth = { isAuthenticate: true };
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+  const { signOut, getUserData, user } = useAuth();
+>>>>>>> bd7a669 (modify: fix navigate to other page)
+=======
+>>>>>>> 8899384 (fix bug)
   const navigate = useNavigate();
+  const { signOut, getUserData, user, isAuthenticated } = useAuth();
+  const [imageProfile, setImageProfile] = useState("");
+
+  const getImageProfile = async () => {
+<<<<<<< HEAD
+    const userEmail = user.email;
+
+    if (user.user_metadata.email_verified) {
+      setImageProfile(user.user_metadata.avatar_url);
+    } else {
+      try {
+        const result = await axios.get(
+          `http://localhost:4000/account/${userEmail}`
+        );
+        setImageProfile(result.data.data);
+      } catch (error) {
+        console.log(error);
+      }
+=======
+    try {
+      const result = await axios.get(`http://localhost:4000/account/1`);
+      setImageProfile(result.data.data);
+    } catch (error) {
+      console.log(error);
+>>>>>>> 1d963c8184314fa698c8887f739c6bb310908068
+    }
+  };
+
+  useEffect(() => {
+<<<<<<< HEAD
+<<<<<<< Updated upstream
+    getUserData();
+    isAuthenticated && getImageProfile();
+  }, []);
 
   const LoginButton = () => {
     const [hoveredItemId, setHoveredItemId] = useState(null);
@@ -24,9 +65,7 @@ function Navbar() {
             ? "hover:text-gray-400 hover:bg-orange-200 hover:rounded-[10px] active:bg-orange-500"
             : ""
         } ${content === "Log Out" ? "border-t-2" : ""}`}
-        onClick={() => {
-          navigate;
-        }}>
+        onClick={navigate}>
         <a>
           <Icon
             color="#3A3B46"
@@ -38,21 +77,41 @@ function Navbar() {
     );
 
     const menuItems = [
-      { icon: UserIcon, content: "Profile" },
-      { icon: PetIcon, content: "Your Pet" },
-      { icon: ListIcon, content: "History" },
-      { icon: LogOutIcon, content: "Log Out", navigate: logout },
-      //   { icon: UserIcon, content: "Profile", navigate: navigate("/profile") },
-      //   { icon: PetIcon, content: "Your Pet", navigate: navigate("/yourpet") },
-      //   { icon: ListIcon, content: "History", navigate: navigate("/history") },
-      //   { icon: LogOutIcon, content: "Log Out", navigate: logout },
+      {
+        icon: UserIcon,
+        content: "Profile",
+        navigate: () => navigate("/profile"),
+      },
+      {
+        icon: PetIcon,
+        content: "Your Pet",
+        navigate: () => navigate("/yourpet"),
+      },
+      {
+        icon: ListIcon,
+        content: "History",
+        navigate: () => navigate("/history"),
+      },
+      { icon: LogOutIcon, content: "Log Out", navigate: () => signOut() },
     ];
 
-    if (auth.isAuthenticate) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+    if (isAuthenticated) {
+=======
+    if (true) {
+>>>>>>> bd7a669 (modify: fix navigate to other page)
+=======
+    if (isAuthenticated) {
+>>>>>>> 8899384 (fix bug)
       return (
         <div className="dropdown dropdown-end">
           <label tabIndex={0}>
-            <img src={frame2} alt="" className="w-12 h-12" />
+            <img
+              src={imageProfile ? imageProfile : frame2}
+              alt=""
+              className="w-12 h-12 rounded-full"
+            />
           </label>
           <ul
             tabIndex={0}
@@ -63,6 +122,7 @@ function Navbar() {
                 id={idx}
                 icon={item.icon}
                 content={item.content}
+                navigate={item.navigate}
               />
             ))}
           </ul>
@@ -80,9 +140,9 @@ function Navbar() {
 
   return (
     <div className="min-w-[1440px] h-20 px-20 flex justify-between items-center flex-shrink-0">
-      <div>
+      <button onClick={() => navigate("/")}>
         <SitterIconBlack width="131" height="40" />
-      </div>
+      </button>
       <div
         className={
           auth.isAuthenticate

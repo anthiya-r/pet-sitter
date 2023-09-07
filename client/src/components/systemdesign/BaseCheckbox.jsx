@@ -3,7 +3,7 @@ import { CheckIcon } from "./Icons";
 export function BaseCheckbox({ isChecked, label, onChanged }) {
   return (
     <div className="form-control">
-      <label className="cursor-pointer label">
+      <label className="cursor-pointer label p-0">
         <input
           type="checkbox"
           className="hidden peer/chk"
