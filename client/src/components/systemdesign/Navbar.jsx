@@ -32,8 +32,13 @@ function Navbar() {
   };
 
   useEffect(() => {
+<<<<<<< Updated upstream
     getUserData();
     isAuthenticated && getImageProfile();
+=======
+    // getImageProfile();
+    // getUserData();
+>>>>>>> Stashed changes
   }, []);
 
   const LoginButton = () => {
