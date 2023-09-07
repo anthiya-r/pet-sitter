@@ -15,6 +15,7 @@ function Navbar() {
   const [imageProfile, setImageProfile] = useState("");
 
   const getImageProfile = async () => {
+<<<<<<< HEAD
     const userEmail = user.email;
 
     if (user.user_metadata.email_verified) {
@@ -28,10 +29,18 @@ function Navbar() {
       } catch (error) {
         console.log(error);
       }
+=======
+    try {
+      const result = await axios.get(`http://localhost:4000/account/1`);
+      setImageProfile(result.data.data);
+    } catch (error) {
+      console.log(error);
+>>>>>>> 1d963c8184314fa698c8887f739c6bb310908068
     }
   };
 
   useEffect(() => {
+<<<<<<< HEAD
 <<<<<<< Updated upstream
     getUserData();
     isAuthenticated && getImageProfile();
@@ -39,6 +48,10 @@ function Navbar() {
     // getImageProfile();
     // getUserData();
 >>>>>>> Stashed changes
+=======
+    getImageProfile();
+    getUserData();
+>>>>>>> 1d963c8184314fa698c8887f739c6bb310908068
   }, []);
 
   const LoginButton = () => {
