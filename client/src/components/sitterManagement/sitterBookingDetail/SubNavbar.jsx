@@ -6,10 +6,9 @@ import YourReview from "./YourReview";
 import { useEffect } from "react";
 
 function SubNavbar(props) {
-
-  useEffect (()=> {
-    console.log("props",props);
-  })
+  useEffect(() => {
+    console.log("props", props);
+  });
 
   return (
     <div className="flex w-[1120px] h-[48px] justify-between ">
@@ -67,36 +66,9 @@ function SubNavbar(props) {
         )}
         {props.status === "In service" && <ButtonPrimary content="Success" />}
 
-        {/* {props.status === "Success" && (
-          <ButtonPrimary
-            className="btn"
-            content="Review"
-            onClick={() => document.getElementById(`review`).showModal()}
-          />
-        )}
-
-        <ReviewModal />
-        {props.status === "Success" && (
-          <ButtonSecondary
-            className="btn"
-            onClick={(e) => {
-              document.getElementById("yourreview").showModal();
-            }}
-            content="Your Review"
-          />
-        )} */}
         <YourReview />
         {props.review_id !== null ? (
           <>
-            {/* {props.status === "Success" && (
-              <ButtonPrimary
-                className="btn"
-                content="Review"
-                onClick={() => document.getElementById(`review`).showModal()}
-              />
-            )} */}
-
-            {/* <ReviewModal /> */}
             {props.status === "Success" && (
               <ButtonSecondary
                 className="btn"
