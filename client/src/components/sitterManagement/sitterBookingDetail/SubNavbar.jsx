@@ -1,7 +1,16 @@
 import { ArrowLeftIcon, Dot } from "../../systemdesign/Icons";
-import { ButtonPrimary } from "../../systemdesign/Button";
+import { ButtonPrimary, ButtonSecondary } from "../../systemdesign/Button";
+import RejectModal from "./RejectModal";
+import ReviewModal from "./ReviewModal";
+import YourReview from "./YourReview";
+import { useEffect } from "react";
 
 function SubNavbar(props) {
+
+  useEffect (()=> {
+    console.log("props",props);
+  })
+
   return (
     <div className="flex w-[1120px] h-[48px] justify-between ">
       <div className="flex justify-center items-center">
@@ -43,15 +52,74 @@ function SubNavbar(props) {
         </div>
       </div>
 
-      <div className="flex">
+      <div className="flex gap-6">
         {props.status === "Waiting for confirm" && (
-          <ButtonPrimary content="Reject and Confirm" />
+          <ButtonSecondary
+            className="btn"
+            content="Reject Booking"
+            width="160px"
+            onClick={() => document.getElementById(`reject`).showModal()}
+          />
         )}
+        <RejectModal />
         {props.status === "Waiting for service" && (
           <ButtonPrimary content="In service" />
         )}
         {props.status === "In service" && <ButtonPrimary content="Success" />}
-        {props.status === "Success" && <ButtonPrimary content="Review" />}
+
+        {/* {props.status === "Success" && (
+          <ButtonPrimary
+            className="btn"
+            content="Review"
+            onClick={() => document.getElementById(`review`).showModal()}
+          />
+        )}
+
+        <ReviewModal />
+        {props.status === "Success" && (
+          <ButtonSecondary
+            className="btn"
+            onClick={(e) => {
+              document.getElementById("yourreview").showModal();
+            }}
+            content="Your Review"
+          />
+        )} */}
+        <YourReview />
+        {props.review_id !== null ? (
+          <>
+            {/* {props.status === "Success" && (
+              <ButtonPrimary
+                className="btn"
+                content="Review"
+                onClick={() => document.getElementById(`review`).showModal()}
+              />
+            )} */}
+
+            {/* <ReviewModal /> */}
+            {props.status === "Success" && (
+              <ButtonSecondary
+                className="btn"
+                onClick={(e) => {
+                  document.getElementById("yourreview").showModal();
+                }}
+                content="Your Review"
+              />
+            )}
+          </>
+        ) : (
+          <>
+            {props.status === "Success" && (
+              <ButtonPrimary
+                className="btn"
+                content="Review"
+                onClick={() => document.getElementById(`review`).showModal()}
+              />
+            )}
+
+            <ReviewModal />
+          </>
+        )}
       </div>
     </div>
   );

@@ -12,7 +12,7 @@ function SitterBookingDetail() {
 
   const getBooking = async () => {
     const result = await axios.get(
-      `/sitterManagement/${params.sitterId}/booking/${params.bookingId}`
+      `/sitterManagement/${params.sitterId}/sitterBookingList/${params.bookingId}`
     );
     console.log(result.data.data);
     setBooking(result.data.data);
@@ -29,6 +29,7 @@ function SitterBookingDetail() {
       <SubNavbar
         status={booking.statuses}
         userFullName={booking.user_full_name}
+        review_id={booking.review_id}
       />
 
       <div className="flex flex-col px-20 py-10 gap-6 bg-etc-white rounded-2xl">
