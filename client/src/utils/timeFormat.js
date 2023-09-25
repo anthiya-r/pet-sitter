@@ -36,3 +36,8 @@ export const timeFormatForSitterReviews = function (time) {
   const format = moment(time).format("ll");
   return format;
 };
+
+export function dateWithOutComma(time) {
+  const formattedDate = moment(time).format("DD MMM YYYY");
+  return formattedDate;
+}
