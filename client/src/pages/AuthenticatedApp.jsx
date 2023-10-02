@@ -10,7 +10,7 @@ import PetListPage from "./UserManagement/PetListPage";
 import CreatePetPage from "./UserManagement/CreatePetPage";
 import BookingHistoryPage from "./UserManagement/BookingHistoryPage";
 import UpdatePetPage from "./UserManagement/UpdatePetPage";
-import PayoutOptionPage from "./SitterManagement/PayOutOptionPage";
+import PayoutOptionPage from "./SitterManagement/PayoutOptionPage";
 import SitterProfilePage from "./SitterManagement/SitterProfilePage";
 import SitterBookingDetailPage from "./SitterManagement/SitterBookingDetailPage";
 import SitterBookingListPage from "./SitterManagement/SitterBookingListPage";
