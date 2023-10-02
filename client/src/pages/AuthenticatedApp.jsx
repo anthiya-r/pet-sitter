@@ -1,5 +1,5 @@
 import BookingPage from "./BookingPage";
-import HomePage from "./HomePage";
+import HomePage from "./Homepage";
 import NotFoundPage from "./NotFoundPage";
 import SearchList from "./SearchList";
 import SitterDetailPage from "./SitterDetailPage";
