@@ -13,7 +13,7 @@ import SitterBookingDetail from "./sitterBookingDetail/SitterBookingDetail";
 import SitterBookingList from "./SitterBookingList";
 import SitterProfile from "./SitterProfile";
 import { useBooking } from "../../contexts/BookingContext";
-import frame2 from "../../assets/SitterReview/frame427320942.png";
+import frame2 from "../../assets/SitterReview/Frame427320942.png";
 import { Vector } from "../systemdesign/image";
 
 const SitterBar = (props) => {
