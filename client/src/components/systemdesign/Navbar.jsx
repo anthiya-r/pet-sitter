@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { SitterIconBlack } from "./Icons";
 import { ButtonPrimary, ButtonSitter } from "./Button";
 import { useAuth } from "../../contexts/authentication";
-import frame2 from "../../assets/SitterReview/frame427320942.png";
+import frame2 from "../../assets/SitterReview/Frame427320942.png";
 import { UserIcon, PetIcon, ListIcon, LogOutIcon } from "./Icons";
 import { useNavigate } from "react-router-dom";
 import usePosts from "../../hooks/usePost";
