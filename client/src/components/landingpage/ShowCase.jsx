@@ -1,6 +1,6 @@
-import frame1 from "../../assets/SitterReview/frame427320941.png";
-import frame2 from "../../assets/SitterReview/frame427320942.png";
-import frame3 from "../../assets/SitterReview/frame427320943.png";
+import frame1 from "../../assets/SitterReview/Frame427320941.png";
+import frame2 from "../../assets/SitterReview/Frame427320942.png";
+import frame3 from "../../assets/SitterReview/Frame427320943.png";
 import cat from "../../assets/SitterReview/lovely-pet-portrait-isolated-1.png";
 import { Star1 } from "../systemdesign/image";
 
